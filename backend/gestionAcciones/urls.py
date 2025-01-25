@@ -1,8 +1,11 @@
 from rest_framework import routers
-from .api import GestionAccionesViewSet
+from django.urls import path
+from .api import GestionAccionesViewSet, resumen_acciones
 
 router = routers.DefaultRouter()
 
 router.register('api/gestionAcciones', GestionAccionesViewSet, 'gestionAcciones')
 
-urlpatterns = router.urls
+urlpatterns = router.urls + [
+    path('api/resumen-acciones/', resumen_acciones, name='resumen_acciones'),  # Ruta para los datos consolidados
+]
